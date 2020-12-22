@@ -17,7 +17,6 @@ class MyStore extends StatefulWidget {
 }
 
 class _MyStoreState extends State<MyStore> {
-  @override
   int cell1 = 1;
   int cell2 = 1;
   int cell3 = 1;
@@ -27,6 +26,16 @@ class _MyStoreState extends State<MyStore> {
     cell2 = Random().nextInt(6) + 1;
     cell3 = Random().nextInt(6) + 1;
     cell4 = Random().nextInt(6) + 1;
+  }
+
+  @override
+  Expanded my_image(int cell) {
+    return Expanded(
+      flex: 1,
+      child: Image(
+        image: AssetImage('images/img$cell.jpeg'),
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
@@ -50,43 +59,17 @@ class _MyStoreState extends State<MyStore> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Image(
-                    // image: NetworkImage('https://smartcdn.prod.postmedia.digital/healthing/images?url=https%3A%2F%2Fsmartcdn.prod.postmedia.digital%2Fhealthing%2Fwp-content%2Fuploads%2F2020%2F01%2Fhappysadlight-scaled-2560.jpg&w=960'),
-                    image: AssetImage('images/img$cell1.jpeg'),
-                  ),
-                ),
+                my_image(cell1),
                 SizedBox(width: 10.0),
-                Expanded(
-                  flex: 1,
-                  child: Image(
-                    //image: NetworkImage('https://smartcdn.prod.postmedia.digital/healthing/images?url=https%3A%2F%2Fsmartcdn.prod.postmedia.digital%2Fhealthing%2Fwp-content%2Fuploads%2F2020%2F01%2Fhappysadlight-scaled-2560.jpg&w=960'),
-                    image: AssetImage('images/img$cell2.jpeg'),
-                  ),
-                ),
+                my_image(cell2)
               ],
             ),
             SizedBox(height: 20.0),
             Row(
               children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Image(
-                    //image: NetworkImage(
-                    // 'https://smartcdn.prod.postmedia.digital/healthing/images?url=https%3A%2F%2Fsmartcdn.prod.postmedia.digital%2Fhealthing%2Fwp-content%2Fuploads%2F2020%2F01%2Fhappysadlight-scaled-2560.jpg&w=960'),
-                    image: AssetImage('images/img$cell3.jpeg'),
-                  ),
-                ),
+                my_image(cell3),
                 SizedBox(width: 10.0),
-                Expanded(
-                  flex: 1,
-                  child: Image(
-                    // image: NetworkImage(
-                    // 'https://smartcdn.prod.postmedia.digital/healthing/images?url=https%3A%2F%2Fsmartcdn.prod.postmedia.digital%2Fhealthing%2Fwp-content%2Fuploads%2F2020%2F01%2Fhappysadlight-scaled-2560.jpg&w=960'),
-                    image: AssetImage('images/img$cell4.jpeg'),
-                  ),
-                ),
+                my_image(cell4)
               ],
             ),
           ],
