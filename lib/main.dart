@@ -17,27 +17,26 @@ class MyStore extends StatefulWidget {
 }
 
 class _MyStoreState extends State<MyStore> {
-  int cell1 = 1;
-  int cell2 = 1;
-  int cell3 = 1;
-  int cell4 = 1;
-  void random() {
-    cell1 = Random().nextInt(6) + 1;
-    cell2 = Random().nextInt(6) + 1;
-    cell3 = Random().nextInt(6) + 1;
-    cell4 = Random().nextInt(6) + 1;
+  int rand;
+  List<int> kids = [1, 2, 3, 4, 5, 6];
+  List<int> electronics = [7, 8, 9];
+  List<int> beauty = [10, 11, 12];
+  List<int> home = [13, 14, 15];
+  int random() {
+    rand = Random().nextInt(3);
+    return rand;
   }
 
-  @override
-  Expanded my_image(int cell) {
+  Expanded myImage(int imgNum) {
     return Expanded(
       flex: 1,
       child: Image(
-        image: AssetImage('images/img$cell.jpeg'),
+        image: AssetImage('images/img$imgNum.jpeg'),
       ),
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[50],
@@ -59,17 +58,21 @@ class _MyStoreState extends State<MyStore> {
           children: <Widget>[
             Row(
               children: <Widget>[
-                my_image(cell1),
+                Text('Outfit'),
+                myImage(kids[random()]),
                 SizedBox(width: 10.0),
-                my_image(cell2)
+                Text('Electronics'),
+                myImage(electronics[random()]),
               ],
             ),
             SizedBox(height: 20.0),
             Row(
               children: <Widget>[
-                my_image(cell3),
+                Text('Beauty'),
+                myImage(beauty[random()]),
                 SizedBox(width: 10.0),
-                my_image(cell4)
+                Text('Furniture'),
+                myImage(home[random()]),
               ],
             ),
           ],
@@ -80,7 +83,7 @@ class _MyStoreState extends State<MyStore> {
         child: Icon(Icons.add),
         onPressed: () {
           setState(() {
-            random();
+            rand = 0;
           });
         },
       ),
