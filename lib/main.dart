@@ -1,15 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyStore(),
-    ),
-  );
-}
+import 'myClasses.dart';
+
+void main() => runApp(
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MyStore(),
+      ),
+    );
 
 class MyStore extends StatefulWidget {
   @override
@@ -17,20 +15,15 @@ class MyStore extends StatefulWidget {
 }
 
 class _MyStoreState extends State<MyStore> {
-  int rand;
-  List<int> kids = [1, 2, 3, 4, 5, 6];
-  List<int> electronics = [7, 8, 9];
-  List<int> beauty = [10, 11, 12];
-  List<int> home = [13, 14, 15];
-  int random() {
-    rand = Random().nextInt(3);
-    return rand;
-  }
+  Generator randNumber = Generator();
+  Products prodType = Products();
 
   Expanded myImage(int imgNum) {
     return Expanded(
       flex: 1,
       child: Image(
+        height: 150.0,
+        width: 200.0,
         image: AssetImage('images/img$imgNum.jpeg'),
       ),
     );
@@ -59,20 +52,20 @@ class _MyStoreState extends State<MyStore> {
             Row(
               children: <Widget>[
                 Text('Outfit'),
-                myImage(kids[random()]),
+                myImage(prodType.kids[randNumber.random()]),
                 SizedBox(width: 10.0),
                 Text('Electronics'),
-                myImage(electronics[random()]),
+                myImage(prodType.electronics[randNumber.random()]),
               ],
             ),
             SizedBox(height: 20.0),
             Row(
               children: <Widget>[
                 Text('Beauty'),
-                myImage(beauty[random()]),
+                myImage(prodType.beauty[randNumber.random()]),
                 SizedBox(width: 10.0),
                 Text('Furniture'),
-                myImage(home[random()]),
+                myImage(prodType.home[randNumber.random()]),
               ],
             ),
           ],
@@ -83,7 +76,7 @@ class _MyStoreState extends State<MyStore> {
         child: Icon(Icons.add),
         onPressed: () {
           setState(() {
-            rand = 0;
+            randNumber.rand = 0;
           });
         },
       ),
