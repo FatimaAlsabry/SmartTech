@@ -1,10 +1,9 @@
-import 'dart:math';
-
+//test merge
 import 'package:flutter/material.dart';
+
 List<String> products = ['Clothes', 'Electroincs', 'Losions', 'Mobiles'];
 
 void main() {
-
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -19,8 +18,6 @@ class MyStore extends StatefulWidget {
 }
 
 class _MyStoreState extends State<MyStore> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +42,7 @@ class _MyStoreState extends State<MyStore> {
             child: ListTile(
               title: Text(products[index]),
               trailing: Image(
-                image: AssetImage('images/img${index+1}.jpeg'),
+                image: AssetImage('images/img${index + 1}.jpeg'),
               ),
               onTap: () {},
             ),
